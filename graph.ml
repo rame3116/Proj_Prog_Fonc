@@ -41,6 +41,16 @@ let v_iter gr f = List.iter (fun (id, out) -> f id out) gr
 
 let v_fold gr f acu = List.fold_left (fun acu (id, out) -> f acu id out) acu gr
 
-let map gr f = List.map (fun (idnoeud,(idarc,label)) -> (idnoeud, (idarc, f label)))
+let rec map (gr : 'a graph) f = 
+  let rec inter f l = match l with
+    |[]->[]
+    |(idarc,label)::rest-> (idarc, f label)::(inter f rest)
+  in
+
+    match gr with
+      |[]->[]
+      |(idno,li) :: rest-> (idno, (inter f li)) :: (map rest f)
 
 
+
+let map = (map : ('a graph -> ('a -> 'b) -> 'b graph))
