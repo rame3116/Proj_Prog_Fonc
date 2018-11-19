@@ -54,3 +54,12 @@ let rec map (gr : 'a graph) f =
 
 
 let map = (map : ('a graph -> ('a -> 'b) -> 'b graph))
+
+
+
+let find_path gr forbidden id1 id2 =
+	(*if List.exists (fun x -> if x = id1 or x = id2 then true else false) forbidden then failwith "Vaut mieux pas que les id1 et 2 soient dans les id interdis" *)
+
+
+
+	

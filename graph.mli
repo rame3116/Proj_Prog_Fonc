@@ -54,4 +54,8 @@ val v_fold: 'a graph -> ('b -> id -> 'a out_arcs -> 'b) -> 'b -> 'b
  * Nodes keep the same identifiers. *)
 val map: 'a graph -> ('a -> 'b) -> 'b graph
 
+(************** IMPLEMENTATION ****************)
+val find_path: int graph -> id list -> id -> id -> path option
+
+
 
