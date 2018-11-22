@@ -57,9 +57,48 @@ let map = (map : ('a graph -> ('a -> 'b) -> 'b graph))
 
 
 
-let find_path gr forbidden id1 id2 =
-	(*if List.exists (fun x -> if x = id1 or x = id2 then true else false) forbidden then failwith "Vaut mieux pas que les id1 et 2 soient dans les id interdis" *)
+let rec find_path gr forbidden id1 id2 result=
+
+  if id1=id2 then result
+  else 
+    let arcs_sort = out_arcs gr id1 in
+      ...
+
+and explore gr forbidden id1 id2 result arcs_sort =
 
 
 
+
+  	
+  	let rec loop gr forbidden id1 id2 result =
+    	(*if List.exists (fun x -> if x = id1 or x = id2 then true else false) forbidden then failwith "Vaut mieux pas que les id1 et 2 soient dans les id interdis" 
+
+      	Liste forbidden a mettre à jour en fonction des noeuds déjà visités*)
+    		match gr with 
+      			| []->
+      			|(noeuds,listarc) -> ( if List.exists (fun (x,_) -> if x = id2 then true else false) listarcs (*Vérifie si le chemin peut se terminer*) then id2::result (*Results = liste de noeud*)
+                             			 else (*Créer un loop ici*)
+                               			match listarc with 
+                                 			|[]->
+                                 			|[(idnoeusuiv,_)] -> if List.exists (fun (x,_) -> if x = idnoeusuiv then true else false) forbidden (*Vérifie si le l'arc est dans forbidden*) then 
+                                       			
+                                       							
+
+                           )
+                           	
+		
+	
+
+
+
+
+  	in
+  	let listefinale = [id1] in
+    	loop gr forbidden id1 id2 listefinale
+      	(*let fin = List.rev listefinale
+        	fin*)
+      	listefinale
+
+
+	
 	
