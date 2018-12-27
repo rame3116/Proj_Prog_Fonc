@@ -57,48 +57,68 @@ let map = (map : ('a graph -> ('a -> 'b) -> 'b graph))
 
 
 
-let rec find_path gr forbidden id1 id2 result=
+let rec find_path gr forbidden id1 id2 result =
 
   if id1=id2 then result
-  else 
+  else (
+
+
     let arcs_sort = out_arcs gr id1 in
-      ...
 
-and explore gr forbidden id1 id2 result arcs_sort =
+    (*id1 n'est pas dans forbidden, on le rajoutera et arcs_sort est la liste de id1*)
+    let rec explore gr forbidden id1 id2 result arcs_sort = match arcs_sort with
+      |[] -> [] (*Mettre la liste vide ici pour montrer que y'a pas de chemin*)
+      |(noeud,_)::rest -> (if (List.exists (fun x -> if x = noeud then true else false) forbidden) then explore gr forbidden id1 id2 result rest 
+                           else (match find_path gr (id1::forbidden) noeud id2 (id1::result) with
+                                  |[] -> explore gr (noeud::forbidden) id1 id2 result rest
+                                  |l -> l
+                                )
+                          )
+    in
+
+      explore gr fobidden id1 id2 result arcs_sort
+  )
 
 
 
 
-  	
-  	let rec loop gr forbidden id1 id2 result =
-    	(*if List.exists (fun x -> if x = id1 or x = id2 then true else false) forbidden then failwith "Vaut mieux pas que les id1 et 2 soient dans les id interdis" 
 
-      	Liste forbidden a mettre à jour en fonction des noeuds déjà visités*)
-    		match gr with 
-      			| []->
-      			|(noeuds,listarc) -> ( if List.exists (fun (x,_) -> if x = id2 then true else false) listarcs (*Vérifie si le chemin peut se terminer*) then id2::result (*Results = liste de noeud*)
-                             			 else (*Créer un loop ici*)
-                               			match listarc with 
-                                 			|[]->
-                                 			|[(idnoeusuiv,_)] -> if List.exists (fun (x,_) -> if x = idnoeusuiv then true else false) forbidden (*Vérifie si le l'arc est dans forbidden*) then 
-                                       			
-                                       							
 
-                           )
-                           	
+	
 		
-	
-
-
-
-
-  	in
-  	let listefinale = [id1] in
-    	loop gr forbidden id1 id2 listefinale
-      	(*let fin = List.rev listefinale
-        	fin*)
-      	listefinale
-
-
-	
-	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
