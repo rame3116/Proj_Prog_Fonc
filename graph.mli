@@ -4,7 +4,7 @@ type 'a graph
 
 (* Each node has a unique identifier (a name). *)
 type id = string
-
+type chemin = id list
 exception Graph_error of string
 
 
@@ -55,7 +55,7 @@ val v_fold: 'a graph -> ('b -> id -> 'a out_arcs -> 'b) -> 'b -> 'b
 val map: 'a graph -> ('a -> 'b) -> 'b graph
 
 (************** IMPLEMENTATION ****************)
-val find_path: int graph -> id list -> id -> id -> path option
+val find_path: int graph -> id list -> id -> id -> chemin
 
 
 
