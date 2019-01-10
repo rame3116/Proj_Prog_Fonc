@@ -63,8 +63,33 @@ let rec find_path gr forbidden id1 id2 result =
 
   if id1=id2 then result
   else (
+<<<<<<< HEAD
 
 
+    let arcs_sort = out_arcs gr id1 in
+=======
+>>>>>>> 88728d373711ac555364d68a2fb864d6274f27b1
+
+    (*id1 n'est pas dans forbidden, on le rajoutera et arcs_sort est la liste de id1*)
+    let rec explore gr forbidden id1 id2 result arcs_sort = match arcs_sort with
+      |[] -> [] (*Mettre la liste vide ici pour montrer que y'a pas de chemin*)
+      |(noeud,_)::rest -> (if (List.exists (fun x -> if x = noeud then true else false) forbidden) then explore gr forbidden id1 id2 result rest 
+                           else (match find_path gr (id1::forbidden) noeud id2 (id1::result) with
+                                  |[] -> explore gr (noeud::forbidden) id1 id2 result rest
+                                  |l -> l
+                                )
+                          )
+    in
+
+<<<<<<< HEAD
+      explore gr forbidden id1 id2 result arcs_sort
+  )
+
+let find_path =(find_path : ('a graph -> id list -> id -> id -> id list -> chemin))
+
+
+
+=======
     let arcs_sort = out_arcs gr id1 in
 
     (*id1 n'est pas dans forbidden, on le rajoutera et arcs_sort est la liste de id1*)
@@ -78,13 +103,9 @@ let rec find_path gr forbidden id1 id2 result =
                           )
     in
 
-      explore gr forbidden id1 id2 result arcs_sort
+      explore gr fobidden id1 id2 result arcs_sort
   )
-
-let find_path =(find_path : ('a graph -> id list -> id -> id -> id list -> chemin))
-
-
-
+>>>>>>> 88728d373711ac555364d68a2fb864d6274f27b1
 
 (*let rec do_list f = function (* fonction prédéfinie en Caml *)
   | [] −> ()
@@ -95,6 +116,16 @@ let find_path =(find_path : ('a graph -> id list -> id -> id -> id list -> chemi
 
 *)
 
+<<<<<<< HEAD
+=======
+	
+		
+		
+		
+		
+		
+		
+>>>>>>> 88728d373711ac555364d68a2fb864d6274f27b1
 		
 		
 		

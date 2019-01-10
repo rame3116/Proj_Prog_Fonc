@@ -19,11 +19,11 @@ let () =
   (* Open file *)
   let graph = Gfile.from_file infile in
 
+  let () = Printf.printf( List.iter (Graph.find_path graph [] _source _sink []))
 
 
-
-  (* Rewrite the graph that has been read. *)
-  let () = Gfile.export outfile graph in (*remettre write file*)
+  (*(* Rewrite the graph that has been read. *)
+  let () = Gfile.export outfile graph in (*remettre write file*)*)
 
   ()
 
